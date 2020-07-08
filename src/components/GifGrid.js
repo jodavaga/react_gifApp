@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { GifItem } from './GifItem';
+
 export const GifGrid = ({ category }) => {
     const apiKey = 'd50nWkDCfjhEfVgJIE9WYClyFqqYuGkZ';
 
@@ -33,13 +35,15 @@ export const GifGrid = ({ category }) => {
     return(
         <>
             <h2>{category}</h2>
-            <ol>
-                {
-                    images.map(({id, title}) => (
-                        <li key={ id }>{title}</li>
-                    ))
-                }
-            </ol>
+            
+            {
+                images.map((data) => (
+                    <GifItem 
+                        key={ data.id }
+                        {...data}
+                    />
+                ))
+            }
         </>
     )
 }
