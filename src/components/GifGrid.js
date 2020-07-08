@@ -1,36 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { getGifs } from '../helpers/getGifs';
 import { GifItem } from './GifItem';
 
 export const GifGrid = ({ category }) => {
-    const apiKey = 'd50nWkDCfjhEfVgJIE9WYClyFqqYuGkZ';
 
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        getGifs();
-    }, []);
 
-    const getGifs = async () => {
+        getGifs( category )
+            .then( setImages )
+            // .then( imgs => setImages( imgs ))
 
-        const url = `https://api.giphy.com/v1/gifs/search?q=${ encodeURI(category) }&limit=10&api_key=${ apiKey }`;
-
-        const resp = await fetch( url );
-        const {data} = await resp.json();
-
-        const gifs =  data.map( img => {
-            return {
-                id: img.id,
-                title: img.title,
-                url: img.images?.downsized_medium.url
-            }
-        })
-
-        console.log(gifs);
-        // useState hook
-        setImages( gifs );
-    }
+    }, [ category ]);
 
     return(
         <>
@@ -39,7 +23,7 @@ export const GifGrid = ({ category }) => {
             <div className="grid">
                 {
                     images.map((data) => (
-                        <GifItem 
+                        <GifItem
                             key={ data.id }
                             {...data}
                         />

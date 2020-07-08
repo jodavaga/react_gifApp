@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const AddCategory = ({ setCategories }) => {
 
-    const [inputValue, setInputValue] = useState('Hola mundo');
+    const [inputValue, setInputValue] = useState('');
 
     // handle input change
     const handleChange = (e) => {
@@ -18,7 +18,7 @@ export const AddCategory = ({ setCategories }) => {
             return;
         }
 
-        setCategories((cats) => [`${inputValue.charAt(0).toUpperCase()}${ inputValue.slice(1) }`]);
+        setCategories((cats) => [`${inputValue.charAt(0).toUpperCase()}${ inputValue.slice(1) }`, ...cats]);
         setInputValue(''); 
     }
 
