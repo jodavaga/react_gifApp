@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 export const GifGrid = ({ category }) => {
@@ -6,6 +6,12 @@ export const GifGrid = ({ category }) => {
     const apiKey = 'd50nWkDCfjhEfVgJIE9WYClyFqqYuGkZ';
 
     const [count, setCount] = useState(0);
+
+    // hook like lyfecycle methods: componentDidMount(), componentDidUpdate()
+    useEffect(() => {
+        // Only execute one time
+        getGifs();
+    }, []);
 
     const getGifs = async () => {
 
@@ -24,9 +30,6 @@ export const GifGrid = ({ category }) => {
 
         console.log(gif);
     }
-
-    // this call will be triggered each time
-    getGifs();
 
     return(
         <>
