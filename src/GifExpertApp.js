@@ -13,8 +13,8 @@ const GifExpertApp = () => {
     return(
         <>
             <h1>Gif Expert App</h1>
-            <AddCategory
-                setCategories= { setCategories }
+            <AddCategory 
+                setCategories = {setCategories} 
             />
             <hr />
 
