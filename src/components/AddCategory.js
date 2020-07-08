@@ -18,7 +18,7 @@ export const AddCategory = ({ setCategories }) => {
             return;
         }
 
-        setCategories((cats) => [...cats, `${inputValue.charAt(0).toUpperCase()}${ inputValue.slice(1) }`]);
+        setCategories((cats) => [`${inputValue.charAt(0).toUpperCase()}${ inputValue.slice(1) }`]);
         setInputValue(''); 
     }
 
