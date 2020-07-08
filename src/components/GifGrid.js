@@ -2,14 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 export const GifGrid = ({ category }) => {
-
     const apiKey = 'd50nWkDCfjhEfVgJIE9WYClyFqqYuGkZ';
 
-    const [count, setCount] = useState(0);
+    const [images, setImages] = useState([]);
 
-    // hook like lyfecycle methods: componentDidMount(), componentDidUpdate()
     useEffect(() => {
-        // Only execute one time
         getGifs();
     }, []);
 
@@ -20,7 +17,7 @@ export const GifGrid = ({ category }) => {
         const resp = await fetch( url );
         const {data} = await resp.json();
 
-        const gif =  data.map( img => {
+        const gifs =  data.map( img => {
             return {
                 id: img.id,
                 title: img.title,
@@ -28,14 +25,21 @@ export const GifGrid = ({ category }) => {
             }
         })
 
-        console.log(gif);
+        console.log(gifs);
+        // useState hook
+        setImages( gifs );
     }
 
     return(
         <>
             <h2>{category}</h2>
-            <h3>{ count }</h3>
-            <button onClick={() => setCount(count + 1)}>Add</button>
+            <ol>
+                {
+                    images.map(({id, title}) => (
+                        <li key={ id }>{title}</li>
+                    ))
+                }
+            </ol>
         </>
     )
 }
