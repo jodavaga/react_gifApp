@@ -11,3 +11,10 @@ button {
   padding: 10px;
   margin-right: 10px;
 }
+
+input {
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  padding: 5px;
+  width: 100%;
+}
