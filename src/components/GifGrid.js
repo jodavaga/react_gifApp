@@ -1,31 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import { getGifs } from '../helpers/getGifs';
-// import { GifItem } from './GifItem';
+import { GifItem } from './GifItem';
+// hooks
 import { useGifFetch } from '../hooks/useGifFetch';
 
 export const GifGrid = ({ category }) => {
 
-    // const [images, setImages] = useState([]);
-
-    // useEffect(() => {
-
-    //     getGifs( category )
-    //         .then( setImages )
-    //         // .then( imgs => setImages( imgs ))
-
-    // }, [ category ]);
-
-    const state = useGifFetch();
+    const { data:images, loading } = useGifFetch( category );
 
     return(
         <>
             <h2>{category}</h2>
 
-            { state.loading ? 'Loading...' : 'CARGADA!'}
+            {/* { loading ? 'Loading...' : null } */}
+            { loading && <p>Loading...</p> }
 
-            {/* <div className="grid">
+            <div className="grid">
                 {
                     images.map((data) => (
                         <GifItem
@@ -34,7 +25,7 @@ export const GifGrid = ({ category }) => {
                         />
                     ))
                 }
-            </div> */}
+            </div>
 
         </>
     )
