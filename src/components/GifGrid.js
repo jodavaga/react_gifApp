@@ -14,7 +14,7 @@ export const GifGrid = ({ category }) => {
             <h2>{category}</h2>
 
             {/* { loading ? 'Loading...' : null } */}
-            { loading && <p>Loading...</p> }
+            { loading && <p className="animate__animated animate__flash">Loading...</p> }
 
             <div className="grid">
                 {
