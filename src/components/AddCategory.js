@@ -26,7 +26,7 @@ export const AddCategory = ({ setCategories }) => {
         <form onSubmit={ handleSubmit }>
             <input 
                 type="text"
-                placeholder = "Add category"
+                placeholder = "Search Gif"
                 value={ inputValue }
                 onChange={ handleChange }
                 onClick={ (e) => e.target.setSelectionRange(0, e.target.value.length) }
